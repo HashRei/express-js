@@ -6,7 +6,7 @@ app.set("view engine", "ejs")
 
 app.get('/', (request, respond) => {
     console.log("Hello")
-    respond.render("index")
+    respond.render("index", { text : ", hope you will enjoy it"})
 })
 
 app.listen(3000)
