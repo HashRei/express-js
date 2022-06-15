@@ -7,6 +7,7 @@ const app = express();
 app.use(express.static("public"))
 
 app.set("view engine", "ejs");
+app.use(express.urlencoded({extended: true})) // {extended: true} has to be there as it is a convention and without it the server is not running properly
 // If the middleware should be used evereywhere define it at the top
 // app.use(logger)
 

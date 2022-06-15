@@ -7,11 +7,20 @@ const router = express.Router();
 // Always put the static routers first, otherwise they will be overwritten by the dynamic ones
 
 router.get("/", (request, respond) => {
-  respond.render("user/new", {firstName: "Empty"})
+  respond.render("user/new", { firstName: "Empty" });
 });
 
 router.post("/", (request, respond) => {
-  respond.send("Create new user");
+  const isValid = true;
+  if (isValid) {
+    users.push({ firstName: request.body.firstName });
+    respond.redirect(`/user/${users.length - 1}`);
+  } else {
+    console.log("Error");
+    respond.render("user/new", { firstName: request.body.firstName });
+  }
+  console.log(request.body.firstName);
+  respond.send("request.body.firstName");
 });
 
 router.get("/new", (request, respond) => {
