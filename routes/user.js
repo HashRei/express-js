@@ -7,6 +7,7 @@ const router = express.Router();
 // Always put the static routers first, otherwise they will be overwritten by the dynamic ones
 
 router.get("/", (request, respond) => {
+  console.log(request.query.name)
   respond.render("user/new", { firstName: "Empty" });
 });
 
