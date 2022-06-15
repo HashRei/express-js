@@ -2,14 +2,14 @@ const { request } = require("express");
 const express = require("express");
 const app = express();
 
+
+
+app.use(express.static("public"))
+
 app.set("view engine", "ejs");
 // If the middleware should be used evereywhere define it at the top
 // app.use(logger)
 
-app.get("/", logger,logger, logger, (request, respond) => {
-  console.log("Hello");
-  respond.render("index", { text: ", hope you will enjoy it" });
-});
 
 /**
  * Routing paths
