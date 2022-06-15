@@ -4,9 +4,9 @@ const app = express();
 
 app.set("view engine", "ejs");
 // If the middleware should be used evereywhere define it at the top
-app.use(logger)
+// app.use(logger)
 
-app.get("/", (request, respond) => {
+app.get("/", logger,logger, logger, (request, respond) => {
   console.log("Hello");
   respond.render("index", { text: ", hope you will enjoy it" });
 });
