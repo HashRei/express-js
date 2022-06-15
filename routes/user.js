@@ -26,6 +26,7 @@ router.get("/new", (request, respond) => {
 router
   .route("/:id")
   .get((request, respond) => {
+    console.log(request.user);
     respond.send(`Get user with ID:${request.params.id}`);
   })
   .put((request, respond) => {
@@ -36,7 +37,10 @@ router
   });
 
 // Long version, that follows a pattern
+
+/**
 router.get("/:id", (request, respond) => {
+  console.log(request.user);
   respond.send(`Get user with ID:${request.params.id}`);
 });
 
@@ -46,6 +50,14 @@ router.put("/:id", (request, respond) => {
 
 router.delete("/:id", (request, respond) => {
   respond.send(`Delete user with ID:${request.params.id}`);
+});
+ */
+
+const users = [{ name: "Bryan" }, { name: "Julius" }];
+
+router.param("id", (request, respond, next, id) => {
+  request.user = users[id];
+  next();
 });
 
 module.exports = router;
